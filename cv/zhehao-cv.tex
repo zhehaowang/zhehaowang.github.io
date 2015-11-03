@@ -7,12 +7,21 @@
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 \newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
 
-\usepackage[left=1in,top=0.6in,right=1in,bottom=0.6in]{geometry}
+\usepackage[left=1in,top=0.4in,right=1in,bottom=0.4in]{geometry}
 \usepackage{enumitem}
+\usepackage{bibentry}
+\usepackage{xstring}
+
+% Quick workaround as I'm the only person with last name Wang
+% The solution without xstring is having trouble with spaces in names;
+% Solution suggested here: http://tex.stackexchange.com/questions/33330/make-one-authors-name-bold-every-time-it-shows-up-in-the-bibliography 
+\def\FormatName#1{%
+  \IfSubStr{#1}{Wang}{\textbf{#1}}{#1}%
+}
 
 \name{Zhehao Wang}
 \address{440 Veteran Avenue, Los Angeles, CA 90024}
-\address{(424)~$\cdot$~333~$\cdot$~8516, zhehao@cs.ucla.edu}
+\address{424-333-8516, zhehao@cs.ucla.edu}
 
 \begin{document}
 
@@ -22,11 +31,11 @@
 
 \begin{rSection}{Education}
 
-{\bf University of California, Los Angeles} \hfill {Sept 2015 - Present} \\ 
+{\bf University of California, Los Angeles} \hfill {Sep 2015 - Present} \\ 
 M.S. in Computer Science (Expected graduation date: Mar 2017) \\
 \itab{Advisor:} \tab{Lixia Zhang}
 
-{\bf Xi'an Jiaotong University, China} \hfill {Sept 2010 - Jun 2014} \\ 
+{\bf Xi'an Jiaotong University, China} \hfill {Sep 2010 - Jun 2014} \\ 
 B.E. in Computer Science \& Technology (Special Program for the Gifted Young) \\
 \itab{Major GPA:} \tab{89/100}
 
@@ -38,25 +47,39 @@ B.E. in Computer Science \& Technology (Special Program for the Gifted Young) \\
 
 \begin{rSection}{Experience}
 
-\begin{rSubsection}{REMAP, University of California, Los Angeles}{Jul 2013 - Present}{Software Developer; Graduate Student Researcher}{Los Angeles}
-\item Application developer for the \textbf{Named Data Networking} (NDN) project, funded by the NSF
+\begin{rSubsection}{The Center for Research in Engineering, Media and Performance, UCLA}{Feb 2014 - Present}{Graduate Student Researcher; Staff Software Developer (through Aug, 2015)}{}
+\item \textbf{Named Data Networking} (NDN) future Internet architecture project, funded by the NSF
 
-\begin{itemize}[noitemsep,topsep=-6pt]
-\item[--] Implemented the chat application (JavaScript) for NDN tutorial in the \textit{2$^{nd}$ ACM Conference on Information-Centric Networking (ACM ICN)}
-\item[--] Developed Matryoshka (C\#), an NDN multiplayer game demonstrated at the \textit{1$^{st}$ ACM ICN}
-\item[--] Updated NDNFS, an NDN friendly file system (C, Fuse)
-\item[--] Designed and implemented NDN building automation management system (Python)
-\item[--] Developed NDN consumer (JavaScript) for OpenPTrack, a multi-person tracking system
+\begin{itemize}[noitemsep,topsep=-6pt,leftmargin=1em]
+\item[--] NDN building automation management system (Python), which receives and aggregates data from UCLA's campus system and encrypts them for access control
+\item[--] In-browser consumer (JS) for real-time NDN data from OpenPTrack, a multi-person tracking system
+\item[--] NDN multiplayer game (C\#, Unity), which explores NDN synchronization in peer-to-peer online games
+\item[--] Performance improvements for NDNFS (C, Fuse), a file system that supports data access from remote
+\item[--] Chat application for the NDN tutorial in the \textit{2$^{nd}$ ACM Conference on Information-Centric Networking}
+\item[--] NDNFit (Java, Android), a mobile health application investigating security in NDN
+% Jeff would not dedicated two lines to a chat application
+% NDNFS2, performance improvement, more about what it is
+% List OpenMHealth and BMS
+% Sort in order from most involved/time devoted to least
+% Explain a little about the technical part, for example Matryoshka peer-to-peer exploration and some such
+% Remove 'designed', 'developed', etc
 \end{itemize}
 
-\item Software engineer for the \textbf{Future of Storytelling} project, funded by Google
+\item \textbf{Future of Storytelling} project, funded by Google
 
-\begin{itemize}[noitemsep,topsep=-6pt]
-\item[--] Developed Fountainhead (Python), a parser that takes in script-writing syntax and generates an ``active'' script, which uses web components and NDN for show control
-\item[--] Implemented the website for the Los Atlantis project (JavaScript, Python Flask, Cassandra)
-\item[--] Developed the adminstrator website (JavaScript, Google Docs) for GracePlains, which creates a live roleplaying experience with Google Glass
+\begin{itemize}[noitemsep,topsep=-6pt,leftmargin=1em]
+\item[--] Fountainhead, a markup parser for a screenwriting language that generates a webpage, which uses web components and NDN for real-time show control
+\item[--] Public-facing website for the Los Atlantis project (http://the-archive.la), which is used for user registration, online show watching and real-time show interaction
+% remove terms that don't make sense to people, 'active' script, 'Fountainhead', etc; underselling the first one, more about how the second one's used
+\item[--] Adminstrator website (JS, Google API) for GracePlains, which creates a live roleplaying game experience with Google Glass
+% Would be helpful to stuff the website URLs in...
 \end{itemize}
 
+\end{rSubsection}
+
+\begin{rSubsection}{Key Lab for Network Security, Xi'an Jiaotong University}{Jul 2011 - Jul 2013}{Undergraduate Researcher}{}
+\item Contributed to high-speed (10Gbps Ethernet/2.5Gbps POS) network traffic capture system
+\item Implemented server status monitoring and task scheduling module (C++) for lab servers
 \end{rSubsection}
 
 \end{rSection}
@@ -67,14 +90,14 @@ B.E. in Computer Science \& Technology (Special Program for the Gifted Young) \\
 
 \begin{rSection}{Publications}
 
-J. Lee, A. Kapoor, M. Amin, \textbf{Zhehao Wang}, Z. Zhang, R. Goyal, T. Abdelzaher:
-``InfoMax: An Information Maximizing Transport Layer Protocol for Named Data Networks'', \textit{ICCCN 2015}
+\nocite{*}
+\bibliographystyle{abbrv-mybold}
+\nobibliography{bibliography.bib}
+\bibentry{infomax}
 
-J. An, X. Gui, \textbf{Zhehao Wang}, J. Yang, X. He:
-``A Crowdsourcing Assignment Model Based on Mobile Crowd Sensing in the Internet of Things'', \textit{IEEE IoT Journal} 2(5): 358-369 (2015)
+\bibentry{crowdsource}
 
-Demo: \textbf{Zhehao Wang}, Z. Qu, J. Burke:
-``Demo overview-Matryoshka: Design of NDN Multiplayer Online Game'', \textit{1$^{st}$ ACM Conference on Information-Centric Networking}. Paris. 2014.
+\bibentry{ndn-mog-demo}
 
 \end{rSection}
 
@@ -85,9 +108,11 @@ Demo: \textbf{Zhehao Wang}, Z. Qu, J. Burke:
 \begin{rSection}{Technical Skills \& Profiles}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{3ex}} l }
-Programming Languages & Python, JavaScript, C++, C\# \\
-Database \& Tools & MySQL, Cassandra, LaTeX, Matlab \\
+Languages & Python, JavaScript, C, C++, C\#, Java, PHP, OCaml, Matlab \\
+% Matlab as language, Consider using platforms instead
+Tools \& Platforms & MySQL, Cassandra, LaTeX \\
 Github Repository & https://github.com/zhehaowang \\
+% Shrink linkedin profile if possible
 Linkedin Profile & https://www.linkedin.com/pub/zhehao-wang/69/398/157 \\
 \end{tabular}
 
@@ -107,3 +132,5 @@ UCLA-CSST Scholarship (9000 USD) \hfill 2013 \\
 \end{rSection}
 
 \end{document}
+
+

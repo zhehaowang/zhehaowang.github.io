@@ -20,7 +20,7 @@
 
 \ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
 
-\LoadClass[11pt,letterpaper]{article} % Font size and paper type
+\LoadClass[10pt,letterpaper]{article} % Font size and paper type
 
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
@@ -116,7 +116,7 @@
   \\
   {\em #3} \hfill {\em #4} % Italic job title and location
   }\smallskip
-  \begin{list}{$\cdot$}{\leftmargin=0em} % \cdot used for bullets, no indentation
+  \begin{list}{$\cdot$}{\leftmargin=1em} % \cdot used for bullets, no indentation
    \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
   }{
   \end{list}
@@ -128,4 +128,4 @@
 \def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
 \def\sectionlineskip{\smallskip} % The space above the horizontal line for each section 
 \def\nameskip{\smallskip} % The space after your name at the top
-\def\sectionskip{\smallskip} % The space after the heading section
+\def\sectionskip{\vspace{0mm}} % The space after the heading section
